@@ -5,9 +5,9 @@ import 'package:provider/provider.dart';
 
 class NewsProvider with ChangeNotifier{
 NewsModel? newsModel;
-  Future<NewsModel>getNewsData(int pageNo) async{
+  Future<NewsModel>getNewsData(int pageNo, String sortBy) async{
 
-newsModel = await CustomHttpRequest.fetchNewsData(pageNo);
+newsModel = await CustomHttpRequest.fetchNewsData(pageNo, sortBy);
 
 return newsModel!;
 

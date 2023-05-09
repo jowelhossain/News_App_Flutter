@@ -17,6 +17,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int pageNo=1;
 
+  String sortBy= "publishedAt";
+
   @override
   Widget build(BuildContext context) {
 
@@ -84,9 +86,34 @@ height: 50,
         ),
       ),
 
+      Align(
+        alignment: Alignment.centerRight,
+        child: DropdownButton(
+
+          dropdownColor: Colors.orange,
+          iconEnabledColor: Colors.deepPurple,
+          iconSize: 30,
+          borderRadius: BorderRadius.circular(10),
+          value:sortBy,
+
+          items: [
+            DropdownMenuItem(child: Text("publishedAt",),value:"publishedAt"),
+            DropdownMenuItem(child: Text("relevancy"),value:"relevancy"),
+            DropdownMenuItem(child: Text("popularity"),value:"popularity"),
+          ],
+          onChanged: (value){
+
+            setState(() {
+              sortBy=value!;
+            });
+          },
+
+        ),
+      ),
+
 
       FutureBuilder<NewsModel>(
-future: newsPorvider.getNewsData(pageNo),
+future: newsPorvider.getNewsData(pageNo,sortBy),
 builder: (context, snapshot) {
   if (snapshot.connectionState == ConnectionState.waiting) {
     return Center(child: CircularProgressIndicator());
