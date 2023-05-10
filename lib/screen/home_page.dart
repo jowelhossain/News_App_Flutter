@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:news_app/model/news_model.dart';
 import 'package:news_app/provider/news_provider.dart';
+import 'package:news_app/screen/news_datails.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -130,59 +131,64 @@ physics: BouncingScrollPhysics(),
     shrinkWrap: true,
       itemCount:snapshot.data!.articles!.length,
       itemBuilder: (context, index){
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
+    return GestureDetector(
+     onTap: (){
+       Navigator.of(context).push(MaterialPageRoute(builder: (context)=>NewsDetails(articles: snapshot.data!.articles![index],)));
+     },
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 10),
 
-      height: 200,
-      width: double.infinity,
+        height: 200,
+        width: double.infinity,
 
-      decoration: BoxDecoration(
-        color: Colors.purple,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.orange,style: BorderStyle.solid, width: 5)
-      ),
+        decoration: BoxDecoration(
+          color: Colors.purple,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.orange,style: BorderStyle.solid, width: 5)
+        ),
 child: Row(children: [
 
   Expanded(
 
-    flex: 2,
-      child: Padding(
-        padding: const EdgeInsets.all(4),
-        child: Container(
+      flex: 2,
+        child: Padding(
+          padding: const EdgeInsets.all(4),
+          child: Container(
 height: double.infinity,
 child: CachedNetworkImage(
 
   imageUrl: "${snapshot.data!.articles![index].urlToImage}",
   progressIndicatorBuilder: (context, url, downloadProgress) =>
-      Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
+        Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
   errorWidget: (context, url, error) => Icon(Icons.image_not_supported),
 fit: BoxFit.fill,
 
 ),
   decoration: BoxDecoration(
-    color: Colors.white,
-    borderRadius: BorderRadius.circular(10)
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(10)
   ),
 
-        ),
-      )),
+          ),
+        )),
   Expanded(
-      flex: 3,
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Container(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Text("${snapshot.data!.articles![index].title}...\n", style: TextStyle(color: Colors.white,fontSize: 18, fontWeight: FontWeight.bold),),
-                Text("Published: ${snapshot.data!.articles![index].publishedAt}",style: TextStyle(color: Colors.white),)
-              ],
+        flex: 3,
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Container(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Text("${snapshot.data!.articles![index].title}...\n", style: TextStyle(color: Colors.white,fontSize: 18, fontWeight: FontWeight.bold),),
+                  Text("Published: ${snapshot.data!.articles![index].publishedAt}",style: TextStyle(color: Colors.white),)
+                ],
+              ),
             ),
           ),
-        ),
-      )),
+        )),
 ],),
 
+      ),
     );
 
   });

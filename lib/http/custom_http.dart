@@ -10,15 +10,22 @@ class CustomHttpRequest{
 
   static Future<NewsModel>fetchNewsData(int pageNo,String sortBy) async{
     NewsModel ? newsModel;
-    String url= "https://newsapi.org/v2/everything?q=all&sortBy=$sortBy&page=$pageNo&apiKey=f81536b0452f4356a4a86fefb164b8f0";
+    try{
 
-    var response = await http.get(Uri.parse(url));
-    var data = jsonDecode(response.body);
+      String url= "https://newsapi.org/v2/everything?q=all&sortBy=$sortBy&page=$pageNo&apiKey=f81536b0452f4356a4a86fefb164b8f0";
 
-    print("The response is ${data}");
+      var response = await http.get(Uri.parse(url));
+      var data = jsonDecode(response.body);
 
-    newsModel = NewsModel.fromJson(data);
-    return newsModel!;
+      print("The response is ${data}");
+
+      newsModel = NewsModel.fromJson(data);
+      return newsModel!;
+    }catch(e){
+      print("Something is wrong ${e}");
+
+      return newsModel!;
+    }
 
 
   }
