@@ -9,7 +9,7 @@ Articles? articles;
   Widget build(BuildContext context) {
     return Scaffold(
 
-appBar: AppBar(title: Text("${articles!.source!.name}"),centerTitle: true,),
+appBar: AppBar(title: Text("${articles!.source!.name}"),centerTitle: true,backgroundColor: Colors.brown,),
       body: Container(
         height: double.infinity,
         width: double.infinity,

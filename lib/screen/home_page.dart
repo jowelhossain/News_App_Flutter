@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:news_app/model/news_model.dart';
 import 'package:news_app/provider/news_provider.dart';
 import 'package:news_app/screen/news_datails.dart';
+import 'package:news_app/screen/search_page.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,6 +29,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.brown,
         title: Text("Daily News"),centerTitle: true,leading: Icon(Icons.newspaper_outlined),
+
+        actions: [
+          IconButton(onPressed: (){
+            Navigator.push(context, ModalBottomSheetRoute(builder: (context)=>SearchPage(), isScrollControlled: true));
+          }, icon:Icon(Icons.search))
+        ],
       ),
       body: Container(
         padding: EdgeInsets.all(5),
