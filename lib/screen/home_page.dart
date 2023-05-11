@@ -105,9 +105,9 @@ height: 50,
           value:sortBy,
 
           items: [
-            DropdownMenuItem(child: Text("publishedAt",),value:"publishedAt"),
-            DropdownMenuItem(child: Text("relevancy"),value:"relevancy"),
-            DropdownMenuItem(child: Text("popularity"),value:"popularity"),
+            DropdownMenuItem(child: Text("PublishedAt",),value:"publishedAt"),
+            DropdownMenuItem(child: Text("Relevancy"),value:"relevancy"),
+            DropdownMenuItem(child: Text("Popularity"),value:"popularity"),
           ],
           onChanged: (value){
 
