@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:news_app/model/news_model.dart';
 import 'package:news_app/provider/news_provider.dart';
-import 'package:news_app/screen/news_datails.dart';
+import 'package:news_app/screen/news_details.dart';
 import 'package:news_app/screen/search_page.dart';
 import 'package:provider/provider.dart';
 

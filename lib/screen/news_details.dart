@@ -1,15 +1,22 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/model/news_model.dart';
+import 'package:news_app/screen/web_view_details.dart';
 
-class NewsDetails extends StatelessWidget {
+class NewsDetails extends StatefulWidget {
  NewsDetails({Key? key, this.articles}) : super(key: key);
 Articles? articles;
+
+  @override
+  State<NewsDetails> createState() => _NewsDetailsState();
+}
+
+class _NewsDetailsState extends State<NewsDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
-appBar: AppBar(title: Text("${articles!.source!.name}"),centerTitle: true,backgroundColor: Colors.brown,),
+appBar: AppBar(title: Text("${widget.articles!.source!.name}"),centerTitle: true,backgroundColor: Colors.brown,),
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -23,7 +30,7 @@ appBar: AppBar(title: Text("${articles!.source!.name}"),centerTitle: true,backgr
             child: Column(children: [
               Container(child: CachedNetworkImage(
 
-                imageUrl: "${articles!.urlToImage}",
+                imageUrl: "${widget.articles!.urlToImage}",
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
                     Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
                 errorWidget: (context, url, error) => Image.asset("images/no_image.jpg"),
@@ -34,10 +41,15 @@ appBar: AppBar(title: Text("${articles!.source!.name}"),centerTitle: true,backgr
               Container(
                 child: Column(
                   children: [
-                    Text("${articles!.title}", style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                    Text("${widget.articles!.title}", style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
                     SizedBox(height:10),
-                    Text("${articles!.description}",style: TextStyle(color: Colors.white70, fontSize:14),),
+                    Text("${widget.articles!.description}",style: TextStyle(color: Colors.white70, fontSize:14),),
                     //Text("${articles!.content}",style: TextStyle(color: Colors.white60, fontSize:14),),
+                    
+                    TextButton(onPressed: (){
+
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>NewsWebView(articles: widget.articles,)));
+                    }, child: Text("See more", style: TextStyle(color: Colors.white),),style: ButtonStyle(backgroundColor:MaterialStateProperty.all(Colors.cyan)),)
                     ]
                 ),
               )

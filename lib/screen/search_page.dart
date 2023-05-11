@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:news_app/http/custom_http.dart';
 import 'package:news_app/model/news_model.dart';
-import 'package:news_app/screen/news_datails.dart';
+import 'package:news_app/screen/news_details.dart';
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
 
