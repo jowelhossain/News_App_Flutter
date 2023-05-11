@@ -66,11 +66,21 @@ class _SearchPageState extends State<SearchPage> {
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
               itemBuilder: (context, index) {
-                return Container(
-                  padding: EdgeInsets.all(5),
-                  child: Center(child: Text("${searchKeyword[index]}")),
-                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Colors.green)
+                return InkWell(
+                  onTap: () async{
+                    searchController.text= searchKeyword[index];
+                    newsModel = await CustomHttpRequest.searchNewsData(searchController.text);
+
+                    setState(() {
+
+                    });
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(5),
+                    child: Center(child: Text("${searchKeyword[index]}")),
+                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.green)
+                    ),
                   ),
                 );
               },
