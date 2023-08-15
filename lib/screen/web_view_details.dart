@@ -48,7 +48,7 @@ class _NewsWebViewState extends State<NewsWebView> {
      }, icon: Icon(Icons.share))],
       ),
 
-      body: WebViewWidget(controller: controller!),
+      body: controller==null? CircularProgressIndicator():WebViewWidget(controller: controller!),
     );
   }
 }

@@ -22,7 +22,7 @@ appBar: AppBar(title: Text("${widget.articles!.source!.name}"),centerTitle: true
         width: double.infinity,
         decoration: BoxDecoration(
         color: Colors.teal,
-            border: Border.all(color: Colors.yellow, width: 5)
+            border: Border.all(color: Colors.white.withOpacity(.5), width: 5)
         ),
         child: SingleChildScrollView(
           child: Padding(
@@ -43,9 +43,9 @@ appBar: AppBar(title: Text("${widget.articles!.source!.name}"),centerTitle: true
                   children: [
                     Text("${widget.articles!.title}", style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
                     SizedBox(height:10),
-                    Text("${widget.articles!.description}",style: TextStyle(color: Colors.white70, fontSize:14),),
+                    Text("${widget.articles!.description}",style: TextStyle(color: Colors.white, fontSize:14),),
                     //Text("${articles!.content}",style: TextStyle(color: Colors.white60, fontSize:14),),
-                    
+                    SizedBox(height: 20),
                     TextButton(onPressed: (){
 
                       Navigator.of(context).push(MaterialPageRoute(builder: (context)=>NewsWebView(articles: widget.articles,)));

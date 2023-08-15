@@ -1,8 +1,6 @@
-import 'dart:convert';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:news_app/model/news_model.dart';
 import 'package:news_app/provider/news_provider.dart';
 import 'package:news_app/screen/news_details.dart';
@@ -28,7 +26,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.brown,
-        title: Text("Daily News"),centerTitle: true,leading: Icon(Icons.newspaper_outlined),
+        title: Text("LIVE NEWS", style: TextStyle(color: Colors.white),),centerTitle: true,leading: Icon(Icons.newspaper_outlined),
 
         actions: [
           IconButton(onPressed: (){

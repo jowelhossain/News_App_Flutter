@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:news_app/provider/news_provider.dart';
 import 'package:news_app/screen/home_page.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+Future main() async{
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  await Future.delayed(const Duration(seconds: 1));
+  FlutterNativeSplash.remove();
   runApp(const MyApp());
 }
 
